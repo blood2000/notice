@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<script>
+    var iosTalk;
+    window.webkit.messageHandlers.beforeGetData.postMessage(null);
+    //获取焦点访谈talkId:  ios调用interviewDetail方法
+    function interviewDetail(param) {
+        iosTalk = JSON.parse(param);
+        //alert(param)
+    }
+    // function getUserInfo(param) {
+    // 	alert(param);
+    // }
+</script>
+<head>
+    <meta charset="UTF-8">
+    <title>访谈</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!--css-->
+    <link rel="stylesheet" href="../../css/mui.min.css">
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/onlineInterview.css">
+    <script src="../../js/mui.min.js"></script>
+    <script src="../../js/jquery-3.1.1.min.js"></script>
+    <script src="../../js/handlebars-v4.0.5.js"></script>
+    <script src="../../js/mui.pullToRefresh.js"></script>
+    <script src="../../js/mui.pullToRefresh.material.js"></script>
+    <script src="../../js/constants.js"></script>
+    <script src="../../js/notesLog.js"></script>
+    <script src="../../js/onlineInterviewDetail.js"></script>
+    <script src="../../js/ios-interact.js"></script>
+
+    <style>
+        .top-nav-blue {
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+<header class="mui-bar mui-bar-nav top-nav-blue" style="box-shadow:0 2px 2px #ccc;">
+    <div class="mui-action-back mui-icon mui-icon-arrowleft mui-pull-left news-back"></div>
+    <h1 id="title" class="mui-title" style="color: black;">访谈</h1>
+</header>
+<div class="mui-content" id="list_con">
+
+    <div style="background: white;">
+        <div class="mui-row " style="padding-top: 10px;padding-left: 5px;padding-right: 5px;">
+            <div class="tag"></div>
+            <div class="spot-name" style="color:#929292;font-size:14px;padding-top: 3px;line-height: 1;">访谈主题</div>
+        </div>
+        <hr width="95%" color="#D9D9D9" size="1px"/>
+        <div id="onlineInterviewName"
+             style="word-break:break-all;margin-top: 5px;padding-left:8px;padding-right:5px;padding-bottom: 5px;text-indent: 2em;color:#929292;font-size:15px;">
+        </div>
+    </div>
+
+    <div style="margin-top: 10px;background: white;">
+        <div class="mui-row " style="padding-top: 10px;padding-left: 5px;padding-right: 5px;">
+            <div class="tag"></div>
+            <div class="spot-name" style="color:#929292;font-size:14px;padding-top: 3px;line-height: 1;">访谈信息</div>
+        </div>
+        <hr width="95%" color="#D9D9D9" size="1px"/>
+        <div id="onlineInterviewContent"
+             style="word-break:break-all;margin-top: 5px;padding-left:8px;padding-right:5px;padding-bottom: 5px;text-indent: 2em;color:#929292;font-size:15px;">
+        </div>
+    </div>
+    <div style="margin-top: 10px;background: white;">
+        <div class="mui-row " style="padding-top: 10px;padding-left: 5px;padding-right: 5px;">
+            <div class="tag"></div>
+            <div class="spot-name" style="color:#929292;font-size:14px;padding-top: 3px;line-height: 1;">在线访谈直播</div>
+        </div>
+        <hr width="95%" color="#D9D9D9" size="1px"/>
+        <div id="tvView" style="width: 100%;">
+            <div class='play'>
+                <div class='Zoom1' id='zoom' style='margin-left:1%'>
+                    <!--<iframe id="view" height='100%' src='' frameborder='0' width='100%' scrolling='no' margin-left='1%'>
+                    </iframe>-->
+                    <video id="view" width="100%" height="100%" margin-left='1%' src="" playsinline controls
+                           onwebkitfullscreenchange="onFullScreenChange()"
+                           onwebkitendfullscreen="onFullScreenChange()"
+                           onwebkitbeginfullscreen="onFullScreenChange()"/>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="margin-top: 10px;background: white;">
+        <div class="mui-row " style="padding-top: 10px;padding-left: 5px;padding-right: 5px;">
+            <div class="tag"></div>
+            <div class="spot-name" style="color:#929292;font-size:14px;padding-top: 3px;line-height: 1;">文字实录</div>
+        </div>
+        <hr width="95%" color="#D9D9D9" size="1px"/>
+        <div class="con-cell con-intro"
+             style="padding-left: 8px;padding-right: 5px;padding-bottom: 5px;color:#929292;font-size:15px;">
+            <span class="text" id="onlineRecord"></span>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

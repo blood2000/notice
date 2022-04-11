@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function compareVersion(verA, operator, verB) {
+				let arr1 = verA.split('.');
+				let arr2 = verB.split('.');
+				// let arr1 = verA.replace(/[^0-9]/ig,"").split('');
+				// let arr2 = verB.replace(/[^0-9]/ig,"").split('');
+				console.log(arr1,arr2)
+				let result = transNum(arr1,arr2);
+				//  补充逻辑
+				switch (operator) {
+					case '=':
+						if (result[0] === result[1]) {
+							return true;
+						} else {
+							return false;
+						}
+						break;
+					case '>':
+						if (result[0] > result[1]) {
+							return true;
+						} else {
+							return false;
+						}
+						break;	
+					case '<':
+						if (result[0] < result[1]) {
+							return true;
+						} else {
+							return false;
+						}
+						break;		
+				}
+
+			}
+
+			function transNum(arr1, arr2) {
+				let result = [];
+				let longArr;
+				let shortArr;
+				if (arr1.length > arr2.length) {
+					longArr = arr1;
+					shortArr = arr2;
+				} else {
+					longArr = arr2;
+					shortArr = arr1;
+				}
+				for (let i = 0; i < longArr.length; i++) {
+					if (shortArr[i] === undefined) {
+						shortArr[i] = '0'
+					}
+				}
+				console.log(arr1,arr2)
+				result[0] = parseInt(arr1.join(''));
+				result[1] = parseInt(arr2.join(''));
+				console.log(result)
+				return result
+			}
+
+			let a = '4.0.1.0';
+			let b = '4.1';
+			console.log(compareVersion(a,'<',b))
+		</script>
+	</body>
+</html>
